@@ -20,9 +20,11 @@ def O2isIntersect(a, b, c):
         for j in b:  # N
 
             if i == j:  # + smth
-                for k in c:
-                    if i == k:
-                        return True
+                if i in c:
+                    return True
+                # for k in c:
+                #     if i == k:
+                #         return True
 
     return False
 
@@ -51,8 +53,10 @@ def main(size):
     e = time()
     print("O2 Elapse :", (e - s))
 
-    s = time()
-    print(O3isIntersect(a, b, c))
-    e = time()
-    print("O3 Elapse :", (e - s))
+    # s = time()
+    # print(O3isIntersect(a, b, c))
+    # e = time()
+    # print("O3 Elapse :", (e - s))
 
+
+main(1_000_000)
