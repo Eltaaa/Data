@@ -16,6 +16,7 @@ def O2isIntersect(a, b, c):
     # y = set(b)
     # z = set(c)
 
+
     for i in a:  # N
         for j in b:  # N
 
