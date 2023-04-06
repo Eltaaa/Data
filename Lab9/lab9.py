@@ -1,6 +1,4 @@
 import random as r
-# test = [9, 20, 13, 3, 10, 5, 8, 6, 2, 16, 4, 19, 7, 12, 1, 11, 15, 17, 18, 14]
-test = [8, 9, 2, 1, 3, 4, 10, 7, 5, 6]
 
 
 def insertSort(lstX):
@@ -10,7 +8,7 @@ def insertSort(lstX):
     last = lst[-1]
 
     # print(lst)
-    compare = 1
+    compare = 0
     current = 1
     while True:
 
@@ -25,8 +23,8 @@ def insertSort(lstX):
         lst.insert(walker + 1, hold)
 
         if hold == last:
-            print(lst)
-            print(f"Comparing Count : {compare}")
+            # print(lst)
+            print(f"InsertSort Comparing Count : {compare}")
             break
 
         current += 1
@@ -61,8 +59,8 @@ def selectionSort(lstX, last=None):
 
         current += 1
 
-    print(lst)
-    print(f"Compare count : {compare}")
+    # print(lst)
+    print(f"SelectionSort Compare count : {compare}")
     return lst
 
 
@@ -89,11 +87,23 @@ def bubbleSort(lstX, last=None):
 
         current += 1
 
-    print(lst)
-    print(f"Compare count : {compare}")
+    print(f"BubbleSortCompare count : {compare}")
 
     return lst
 
 # insertSort(r.sample(range(1, 100+1),20))
 # selectionSort(r.sample(range(1, 101), 20))
 # bubbleSort(r.sample(range(1, 10001), 200))
+
+
+lst10 = [8, 9, 2, 1, 3, 4, 10, 7, 5, 6]
+
+x = r.sample(range(1, 101), 15)
+
+# x = [x for x in range(20, 0, -1)]
+
+print(insertSort(x))
+print()
+print(selectionSort(x))
+print()
+print(bubbleSort(x))
