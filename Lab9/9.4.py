@@ -1,7 +1,17 @@
 import random as r
 
+dct = {}
+x = 0
+for i in "2 3 4 5 6 7 8 9 10 J Q K A".split(" "):
+    for j in "♣♦♥♠":
+        dct[i+j] = x
+        x += 1
 
-def insertSort(lstX):
+keys = list(dct.keys())
+val = list(dct.values())
+
+
+def insertionSort(lstX):
     # just so we don't change original list
     lst = lstX.copy()
     # just so we don't change original list
@@ -14,24 +24,27 @@ def insertSort(lstX):
 
         walker = current - 1
         hold = lst.pop(current)
-        # print(f"hold = {hold}\nwalker = {walker}")
-        # print(lst)
-        while walker >= 0 and hold <= lst[walker]:
+
+        while walker >= 0 and dct[hold] <= dct[lst[walker]]:
             compare += 1
             walker -= 1
 
+        if walker >= 0:
+            compare += 1
         lst.insert(walker + 1, hold)
 
+        print(lst)
         if hold == last:
             # print(lst)
             print(f"InsertSort Comparing Count : {compare}")
             break
-
         current += 1
+
     return lst
 
 
 def selectionSort(lstX, last=None):
+    # ['4♣', 'A♣', '10♥', 'K♦', '4♠', '10♣', '3♦', '7♥', '4♦']
     lst = lstX.copy()
 
     if last is None:
@@ -45,15 +58,15 @@ def selectionSort(lstX, last=None):
         walker = current + 1
 
         while walker < len(lst):
-            smallest = min(smallest, lst[walker])
+            # print(lst[walker])
+            smallest = keys[val[(min(dct[smallest], dct[lst[walker]]))]]
             compare += 1
             walker += 1
 
         x = lst.index(smallest)
         lst[current], lst[x] = lst[x], lst[current]
 
-        # print(lst)
-
+        print(lst)
         if current == len(lst) - 1:
             break
 
@@ -79,7 +92,7 @@ def bubbleSort(lstX, last=None):
         sorted = True
 
         while walker > current:
-            if lst[walker] < lst[walker - 1]:
+            if dct[lst[walker]] < dct[lst[walker - 1]]:
                 sorted = False
                 lst[walker], lst[walker - 1] = lst[walker - 1], lst[walker]
             compare += 1
@@ -87,13 +100,10 @@ def bubbleSort(lstX, last=None):
 
         current += 1
 
+    print(lst)
     print(f"BubbleSortCompare count : {compare}")
 
     return lst
-
-# insertSort(r.sample(range(1, 100+1),20))
-# selectionSort(r.sample(range(1, 101), 20))
-# bubbleSort(r.sample(range(1, 10001), 200))
 
 
 lst10 = [8, 9, 2, 1, 3, 4, 10, 7, 5, 6]
@@ -102,8 +112,10 @@ x = r.sample(range(1, 101), 15)
 
 # x = [x for x in range(20, 0, -1)]
 
-print(insertSort(x))
-print()
-print(selectionSort(x))
-print()
-print(bubbleSort(x))
+# print(insertionSort(x))
+# print()
+# print(selectionSort(x))
+# print()
+# print(bubbleSort(x))
+# ♣ ♥ ♦ ♠
+bubbleSort(['4♣', 'A♣', '10♥', 'K♦', '4♠', '10♣', '3♦', '7♥', '4♦'])
